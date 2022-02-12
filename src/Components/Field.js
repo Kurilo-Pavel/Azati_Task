@@ -5,17 +5,56 @@ import Loading from "./Loading";
 const Field = () => {
   const users = useSelector((state) => state.users.users);
   const status = useSelector((state) => state.users.loading);
-  console.log(users)
+  const repeat = useSelector((state) => state.users.repeat);
+  const PHP = useSelector((state) => state.users.php);
+  const HTML = useSelector((state) => state.users.html);
+  const JavaScript = useSelector((state) => state.users.js);
+  const Java = useSelector((state) => state.users.java);
 
-  if(users){console.log(users.items[0].id)}
+  const noRepeat = () => {
+    if (users) {
+      const listUsers = [];
+      const listLoginUsers = [];
+      users.items.forEach((user) => {
+        if (!listLoginUsers.includes(user.owner.login)) {
+          listUsers.push(user)
+          listLoginUsers.push(user.owner.login)
+        }
+      })
+      return listUsers
+    }
+  }
+
+  const listUsers = repeat ? noRepeat() : users.items
 
   return <div>
     {status === 'loading' ? <Loading/> : null}
-    {users ? users.items.map(user => {
-      return (
-        <div key={uuidv4()}
-        className="inline-block border border-gray-400 w-1/5"
-        >{user.id}</div>)
+    {users ? listUsers.map(user => {
+
+      switch (user.language) {
+        case PHP:
+          break;
+        case JavaScript:
+          break;
+        case Java:
+          break;
+        case HTML:
+          break;
+        default:
+          return (<div key={uuidv4()}
+                       className="border border-gray-400 w-[40%] h- inline-block m-2 box-border"
+          >
+            <img src={user.owner.avatar_url}
+                 className="w-1/4 h-1/4 rounded-[50%] text-center left-1/2 relative translate-x-[-50%]"/>
+            <a href={user.owner.html_url}
+               className="break-words hover:text-gray-500 hover:underline "
+            >url: {user.owner.html_url}</a>
+            <p className="break-words">login: {user.owner.login}</p>
+            <p className="break-words">name: {user.full_name}</p>
+            <p>id: {user.owner.id}</p>
+            <p>language: {user.language}</p>
+          </div>)
+      }
     }) : null}
   </div>
 }
