@@ -17,6 +17,8 @@ export const userSlice = createSlice({
       js: false,
       html: false,
       php: false,
+      page: '',
+      user: '',
     },
     reducers: {
       targetRepeat: (state, action) => {
@@ -34,6 +36,12 @@ export const userSlice = createSlice({
       targetJava: (state, action) => {
         state.java = action.payload
       },
+      targetPage: (state, action) => {
+        state.page = action.payload
+      },
+      targetUser: (state, action) => {
+        state.user = action.payload
+      },
     },
     extraReducers: {
       [getUsers.pending]: state => {
@@ -46,5 +54,5 @@ export const userSlice = createSlice({
     }
   }
 );
-export const {targetRepeat, targetPHP, targetJS, targetHTML, targetJava} = userSlice.actions
+export const {targetUser, targetRepeat, targetPHP, targetJS, targetHTML, targetJava, targetPage} = userSlice.actions
 export default userSlice.reducer;

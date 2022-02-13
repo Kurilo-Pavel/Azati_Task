@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux";
 import {getUsers} from "./store/usersSlice";
 
-const Seach = () => {
+const Search = () => {
   const dispatch = useDispatch();
 
   return <div className="h-20">
@@ -14,4 +14,4 @@ const Seach = () => {
 
   </div>
 }
-export default Seach;
+export default Search;

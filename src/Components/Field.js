@@ -1,6 +1,9 @@
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {v4 as uuidv4} from "uuid";
 import Loading from "./Loading";
+import {Link} from "react-router-dom";
+import {targetPage} from "./store/usersSlice";
+import {targetUser} from "./store/usersSlice";
 
 const Field = () => {
   const users = useSelector((state) => state.users.users);
@@ -10,7 +13,7 @@ const Field = () => {
   const HTML = useSelector((state) => state.users.html);
   const JavaScript = useSelector((state) => state.users.js);
   const Java = useSelector((state) => state.users.java);
-
+  const dispatch = useDispatch();
   const noRepeat = () => {
     if (users) {
       const listUsers = [];
@@ -46,9 +49,14 @@ const Field = () => {
           >
             <img src={user.owner.avatar_url}
                  className="w-1/4 h-1/4 rounded-[50%] text-center left-1/2 relative translate-x-[-50%]"/>
-            <a href={user.owner.html_url}
-               className="break-words hover:text-gray-500 hover:underline "
-            >url: {user.owner.html_url}</a>
+            <Link to="/azati"
+                  value={user.owner.html_url}
+                  className="break-words hover:text-gray-500 hover:underline "
+                  onClick={(e) => {
+                    dispatch(targetPage(e.target.getAttribute('value')))
+                    dispatch(targetUser(user))
+                  }}
+            >url: {user.owner.html_url}</Link>
             <p className="break-words">login: {user.owner.login}</p>
             <p className="break-words">name: {user.full_name}</p>
             <p>id: {user.owner.id}</p>
