@@ -13,7 +13,7 @@ function App() {
       <Routes>
         <Route path="/azati" element={<GitHubPage/>}/>
 
-        <Route path="/" element={
+        <Route path="/azati_task" element={
 
           <div className="text-center">
             <Search/>
