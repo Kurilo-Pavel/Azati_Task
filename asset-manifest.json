@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/azati_task/static/css/main.367fca98.css",
-    "main.js": "/azati_task/static/js/main.88157226.js",
+    "main.js": "/azati_task/static/js/main.1d2d40a2.js",
     "index.html": "/azati_task/index.html",
     "main.367fca98.css.map": "/azati_task/static/css/main.367fca98.css.map",
-    "main.88157226.js.map": "/azati_task/static/js/main.88157226.js.map"
+    "main.1d2d40a2.js.map": "/azati_task/static/js/main.1d2d40a2.js.map"
   },
   "entrypoints": [
     "static/css/main.367fca98.css",
-    "static/js/main.88157226.js"
+    "static/js/main.1d2d40a2.js"
   ]
 }
